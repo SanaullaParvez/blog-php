@@ -1,15 +1,19 @@
 <?php
-
+session_start();
+if(isset($_SESSION['id'])){
+    header('Location: dashboard.php');
+}
 require_once '../vendor/autoload.php';
 //require_once '../app/classes/Login.php';
 use App\classes\Login;
 
-//if(isset($_POST["btn"])){
+$message = '';
+if(isset($_POST["btn"])){
     $login = new Login();
-    $user = $login->adminLoginCheck($_POST);
-echo '<pre>';
-    print_r($user) ;
-//}
+    $message = $login->adminLoginCheck($_POST);
+//    echo '<pre>';
+//    print_r($user) ;
+}
 
 
 ?>
@@ -26,6 +30,7 @@ echo '<pre>';
         <div class="col-sm-6 mx-auto">
             <div class="card">
                 <div class="card-body">
+                    <h4><?php echo $message;?></h4><br/>
                     <form action="" method="post">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
