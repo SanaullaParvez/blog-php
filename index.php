@@ -6,6 +6,12 @@
  * Time: 11:41 AM
  */
 
+require_once 'vendor/autoload.php';
+
+use App\classes\Application;
+
+$app = new Application();
+$queryResult = $app->getAllPublishedBlogInfo();
 ?>
 
 <!DOCTYPE html>
