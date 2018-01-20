@@ -73,13 +73,13 @@ class BlogInfo
         if($queryResult){
             while ($newBlog = mysqli_fetch_assoc($queryResult)){
                 $blog = new Blog();
-                $blog->setId($newBlog[id]);
-                $blog->setCategoryId($newBlog[category_id]);
-                $blog->setBlogTitle($newBlog[blog_title]);
-                $blog->setShortDescription($newBlog[short_description]);
-                $blog->setLongDescription($newBlog[long_description]);
-                $blog->setBlogImage($newBlog[blog_image]);
-                $blog->setPublicationStatus($newBlog[publication_status]);
+                $blog->setId($newBlog['id']);
+                $blog->setCategoryId($newBlog['category_id']);
+                $blog->setBlogTitle($newBlog['blog_title']);
+                $blog->setShortDescription($newBlog['short_description']);
+                $blog->setLongDescription($newBlog['long_description']);
+                $blog->setBlogImage($newBlog['blog_image']);
+                $blog->setPublicationStatus($newBlog['publication_status']);
                 $this->setBlog($blog);
             }
             return $this->blog;

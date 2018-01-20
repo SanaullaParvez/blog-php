@@ -70,10 +70,10 @@ class CategoryInfo
         if($queryResult){
             while ($newCategory = mysqli_fetch_assoc($queryResult)){
                 $category = new Category();
-                $category->setId($newCategory[id]);
-                $category->setCategoryName($newCategory[category_name]);
-                $category->setCategoryDescription($newCategory[category_description]);
-                $category->setPublicationStatus($newCategory[publication_status]);
+                $category->setId($newCategory['id']);
+                $category->setCategoryName($newCategory['category_name']);
+                $category->setCategoryDescription($newCategory['category_description']);
+                $category->setPublicationStatus($newCategory['publication_status']);
                 $this->setCategory($category);
             }
             return $this->category;

@@ -22,12 +22,16 @@ class Category
      * @param $category_description
      * @param $publication_status
      */
-    public function __construct($category_name, $category_description, $publication_status)
+    public function __construct()
     {
-        $this->category_name = $category_name;
-        $this->category_description = $category_description;
-        $this->publication_status = $publication_status;
     }
+
+//    public function __construct1($category_name, $category_description, $publication_status)
+//    {
+//        $this->category_name = $category_name;
+//        $this->category_description = $category_description;
+//        $this->publication_status = $publication_status;
+//    }
 
 
     /**

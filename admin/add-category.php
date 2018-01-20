@@ -8,9 +8,14 @@ if(isset($_POST['btn'])){
     $categoryName = $_POST['category_name'];
     $categoryDescription = $_POST['category_description'];
     $publicationStatus = $_POST['publication_status'];
-    $category = new Category($categoryName,$categoryDescription,$publicationStatus);
+//    $category = new Category($categoryName,$categoryDescription,$publicationStatus);
+    $category = new Category();
+    $category->setCategoryName($categoryName);
+    $category->setCategoryDescription($categoryDescription);
+    $category->setPublicationStatus($publicationStatus);
     $categoryInfo = new CategoryInfo();
     $message = $categoryInfo->addCategory($category);
+//    print_r($category);
 }
 
 ?>

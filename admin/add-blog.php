@@ -20,7 +20,14 @@ if(isset($_POST['btn'])){
 //    echo '<pre>';
 //    print_r($blog);
 //    print_r($_FILES);
-    $blog = new Blog($categoryId,$blogTitle,$shortDescription,$longDescription,$blogImage,$publicationStatus);
+//    $blog = new Blog($categoryId,$blogTitle,$shortDescription,$longDescription,$blogImage,$publicationStatus);
+    $blog = new Blog();
+    $blog->setCategoryId($categoryId);
+    $blog->setBlogTitle($blogTitle);
+    $blog->setShortDescription($shortDescription);
+    $blog->setLongDescription($longDescription);
+    $blog->setBlogImage($blogImage);
+    $blog->setPublicationStatus($publicationStatus);
     $blogInfo = new BlogInfo();
 //    print_r($blogImage);
 //    print_r($blog);

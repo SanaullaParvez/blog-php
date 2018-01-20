@@ -28,15 +28,15 @@ class Blog
      * @param $blog_image
      * @param $publication_status
      */
-    public function __construct($category_id, $blog_title, $short_description, $long_description, $blog_image, $publication_status)
-    {
-        $this->category_id = $category_id;
-        $this->blog_title = $blog_title;
-        $this->short_description = $short_description;
-        $this->long_description = $long_description;
-        $this->blog_image = $blog_image;
-        $this->publication_status = $publication_status;
-    }
+//    public function __construct($category_id, $blog_title, $short_description, $long_description, $blog_image, $publication_status)
+//    {
+//        $this->category_id = $category_id;
+//        $this->blog_title = $blog_title;
+//        $this->short_description = $short_description;
+//        $this->long_description = $long_description;
+//        $this->blog_image = $blog_image;
+//        $this->publication_status = $publication_status;
+//    }
 
     /**
      * @return mixed
@@ -142,12 +142,12 @@ class Blog
 
     public static function checkFile($file,$old_file=NULL)
     {
-        $fileName = $file[blog_image][name];
-        $fileSize = $file[blog_image][size];
+        $fileName = $file['blog_image']['name'];
+        $fileSize = $file['blog_image']['size'];
         $directory = '../assets/images/';
         $fileURL = $directory . $fileName;
-        $fileType = pathinfo($file[blog_image][name], PATHINFO_EXTENSION);
-        $check = getimagesize($file[blog_image][tmp_name]);
+        $fileType = pathinfo($file['blog_image']['name'], PATHINFO_EXTENSION);
+        $check = getimagesize($file['blog_image']['tmp_name']);
 //    print_r($check);
         if ($check) {
             if (file_exists($fileURL)) {
@@ -161,7 +161,7 @@ class Blog
                     } else {
                         if($old_file)
                             unlink($old_file);
-                        move_uploaded_file($file[blog_image][tmp_name], $fileURL);
+                        move_uploaded_file($file['blog_image']['tmp_name'], $fileURL);
                         return $fileURL;
                     }
                 }

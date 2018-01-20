@@ -19,9 +19,9 @@ class Database
     public function __construct()
     {
         $this->hostName = 'localhost';
-        $this->userName = 'admin';
-        $this->password = 'D@cker';
-        $this->dbName = 'blog_php';
+        $this->userName = 'root';
+        $this->password = '';
+        $this->dbName = 'blog72';
     }
 
     /**
