@@ -11,8 +11,8 @@ $message = '';
 if(isset($_POST["btn"])){
     $login = new Login();
     $message = $login->adminLoginCheck($_POST);
-//    echo '<pre>';
-//    print_r($user) ;
+    echo '<pre>';
+    print_r($message) ;
 }
 
 

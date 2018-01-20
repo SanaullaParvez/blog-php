@@ -1,6 +1,23 @@
+<?php include 'includes/header.php'; ?>
+
 <?php
-include 'includes/header.php';
+use App\classes\Category;
+use App\classes\CategoryInfo;
+$message = '';
+if(isset($_POST['btn'])){
+    $categoryName = $_POST['category_name'];
+    $categoryDescription = $_POST['category_description'];
+    $publicationStatus = $_POST['publication_status'];
+    $category = new Category($categoryName,$categoryDescription,$publicationStatus);
+    $categoryInfo = new CategoryInfo();
+    $message = $categoryInfo->addCategory($category);
+}
+
 ?>
+
+
+
+
     <div class="container" style="margin-top: 10px;">
         <div class="row">
             <div class="col-sm-10 mx-auto">

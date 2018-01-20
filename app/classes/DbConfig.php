@@ -13,13 +13,17 @@ class DbConfig extends Database
 {
 
     private $connection;
+    private static $dbConfig = null;
 
     /**
      * @return \mysqli
      */
-    public function getConnection()
+    public static function getConnection()
     {
-        return $this->connection;
+        if (self::$dbConfig === null){
+            self::$dbConfig = new self();
+        }
+        return self::$dbConfig->connection;
     }
 
     public function __construct()
@@ -32,6 +36,12 @@ class DbConfig extends Database
                 exit;
             }
         }
+        return $this->connection;
+    }
+
+    public static function getQueryResult($sql){
+        $queryResult = mysqli_query(self::getConnection(),$sql);
+        return $queryResult;
     }
 
 //    public function dbConnection(){

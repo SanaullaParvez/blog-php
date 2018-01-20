@@ -11,7 +11,7 @@ require_once 'vendor/autoload.php';
 use App\classes\Application;
 
 $app = new Application();
-$queryResult = $app->getAllPublishedBlogInfo();
+$allPublishedBlog = $app->getAllPublishedBlogInfo();
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +76,22 @@ $queryResult = $app->getAllPublishedBlogInfo();
 
     <!-- Page Features -->
     <div class="row text-center">
+
+        <?php foreach ($allPublishedBlog as $blog): ?>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="admin/<?php echo $blog['blog_image']?>" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $blog["blog_title"];?></h4>
+                        <p class="card-text"><?php echo $blog["short_description"];?></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="blog-post.php?blog_id=<?php echo $blog["id"];?>" class="btn btn-primary">Find Out More!</a>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card">

@@ -16,7 +16,7 @@ class Login
 
     public function __construct()
     {
-        $this->dbConfig = new DbConfig();
+        $this->dbConfig = DbConfig::getConnection();
     }
 
     public function adminLoginCheck($user){
@@ -24,13 +24,17 @@ class Login
         $password = md5($user['password']);
 //        $email = 'admin';
 //        $password = md5('123456');
-//        return $user;
-        $connection = $this->dbConfig->getConnection();
+        $connection = $this->dbConfig;
+//        return $connection;
 //        $connection = DbConfig::dbConnection();
         $sql = "SELECT * FROM blog_php.users Where email='$email' AND password='$password';";
         if(mysqli_query($connection, $sql)){
             $queryResult = mysqli_query($connection, $sql);
             $user = mysqli_fetch_assoc($queryResult);
+//            while($user = mysqli_fetch_assoc($queryResult)){
+//                echo '<pre>';
+//                print_r($user);
+//            }
             if($user){
                 $message = '';
                 session_start();
